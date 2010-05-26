@@ -1,0 +1,236 @@
+@charset "utf-8";
+
+body {
+	background-color: #ebebeb;
+	color: #464646;
+	font-family: Lucida Grande, Arial;
+	font-size: 13px;
+	margin: 0;
+	padding: 0;
+	text-align: center; }
+
+.wrapper {
+	margin: 0 auto;
+	width: 900px; }
+
+.content {
+	background-color: #FFFFFF;
+	border: 1px solid #bab9b9;
+	margin-bottom: 40px;
+	padding-bottom: 0;
+	text-align: center; }
+
+.section {
+	margin: 25px auto;
+	text-align: left;
+	width: 850px; }
+
+	.section .sub {
+		margin: 0;
+		padding: 0; }
+
+.line {
+	border-top: 1px solid #bab9b9;
+	height: 1px; }
+
+.seperator {
+	color: #999999;
+	padding: 0 5px; }
+
+/* General */
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0; }
+
+h1 { font-size: 32px; }
+
+h2 {
+	font-family: Georgia;
+	font-size: 24px;
+	font-style: italic; }
+
+form { line-height: 2em; }
+
+a:link, a:visited {
+	color: #30a4b1;
+	text-decoration: none; }
+
+a:hover { color: #f7941d; }
+
+/* Header */
+.logo {
+	float: left;
+	margin: 25px 0; }
+
+.welcome {
+	float: right;
+	margin-top: 15px; }
+
+	.welcome img {
+		margin-right: 5px;
+		vertical-align: text-bottom; }
+
+	.welcome strong a { color: #30a4b1; }
+
+		.welcome strong a:hover { color: #f7941d; }
+
+
+/* Form */
+
+input[type="text"], input[type="password"] {
+	border: 1px solid #bab9b9;
+	color: #707070;
+	font-size: 16px;
+	padding: 11px;
+	width: 400px; }
+
+#pos input[type="text"].small { width: 100px; }
+
+select {
+	border: 1px solid #bab9b9;
+	color: #707070;
+	font-size: 16px;
+	padding: 10px;
+	width: 305px; }
+
+#pos select.small { width: 150px; }
+
+input[type="submit"] {
+	background-color: #f7941d;
+	border: 0px;
+	color: #fff;
+	font-size: 16px;
+	margin: 0px;
+	padding: 10px 20px; }
+
+	input[type="submit"]:active { background-color: #30a4b1; }
+
+/* Check YES or NO */
+.check {
+	background-color: #f7f7f7;
+	border: 1px solid #bab9b9;
+	margin: 25px;
+	padding: 10px 15px;
+	text-align: left; }
+
+.check.bad {
+	background-color: #FFC1C1;
+	border: 1px solid  #CD0000; }
+
+.check.good {
+	background-color: #CCFFCC;
+	border: 1px solid #4CBB17; }
+
+.check.info, .check.help {
+	background-color:  #C1F0F6;
+	border: 1px solid #66CCCC; }
+
+.check.warning {
+	background-color: #FFFF88;
+	border: 1px solid  #FFB00F; }
+
+	.check ul {
+		margin: 0;
+		padding: 0; }
+
+		.check ul li {
+			line-height: 1.5em;
+			list-style-type: none; }
+
+	.check div { padding-left: 30px; }
+
+	.check .good { background: url("../img/accept.png") no-repeat 0 50%; }
+
+	.check .info { background: url("../img/information.png") no-repeat 0 50%; }
+
+	.check .warning { background: url("../img/error.png") no-repeat 0 50%; }
+
+	.check .bad { background: url("../img/exclamation.png") no-repeat 0 50%; }
+
+	.check .help { background: url("../img/help.png") no-repeat 0 50%; }
+
+
+/* Navigation */
+
+.navigation {
+	background-color: #464646;
+	float: left;
+	margin-bottom: 20px;
+	position: relative;
+	width: 900px; }
+
+	.navigation img {
+		padding:0;
+		margin:0;
+		margin-right: 10px;
+		vertical-align: text-bottom; }
+
+	.navigation ul {
+		margin: 0px;
+		padding: 0px; }
+
+		.navigation ul li {
+			float: left;
+			font-weight: normal;
+			list-style: none;
+			margin: 0;
+			padding: 0; }
+
+	.navigation li a {
+		color: #fff;
+		float: left;
+		font-size: 14px;
+		margin: 0;
+		padding: 20px 30px;
+		text-decoration: none; }
+
+		.navigation li a:hover, .navigation li .active {
+			background-color: #30a4b1;
+			color: #FFFFFF; }
+
+.clear { clear: both; }
+
+
+/* Search Form */
+
+#search {
+	position: absolute;
+	right: 15px;
+	top: 13px; }
+
+	#search input[type="search"] {
+		background-color: #FFFFFF;
+		border: 1px solid #ccc;
+		color: #464646;
+		font-size: 14px;
+		margin: 0;
+		padding: 6px;
+		width: 200px; }
+
+	#search input[type="submit"] {
+		background-color: #f7941d;
+		border: 0px;
+		color: #fff;
+		font-size: 14px;
+		height: 30px;
+		margin: 0 0 0 5px;
+		padding: 6px; }
+
+		#search input[type="submit"]:active { background-color: #30a4b1; }
+
+
+/* Table */
+
+td {
+	padding: 12px;
+	text-align: left; }
+
+.gray td { background-color: #f7f7f7; }
+
+.list {
+	border-left: 1px solid #bab9b9;
+	border-right: 1px solid #bab9b9;
+	border-top: 1px solid #bab9b9; }
+
+tr td { border-bottom: 1px solid #bab9b9; }

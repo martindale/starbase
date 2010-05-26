@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Starbase Tracker</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" type="text/css"  href="css/main.css" />
+</head>
+<body>
+<div class="wrapper">
+	<h1 class="logo">Starbase Tracker</h1>
+	<p class="welcome">Welcome back <strong><a href="#">Ninja Admin</a></strong> <span class="seperator">|</span> <a href="#"><img src="img/door_out.png" />Logout</a></p>
+
+	<div class="navigation">
+		<ul>
+			<li><a href="#"><img src="img/house.png" />Overview</a></li>
+			<li><a href="#"><img src="img/lorry.png" />Fuel</a></li>
+			<li><a href="#"><img src="img/wrench.png" />Admin</a></li>
+			<li><a href="#"><img src="img/add.png" />New POS</a></li>
+		</ul>
+
+			<div id="search">
+				<form method="get" action="search.php">
+					<input type="search" placeholder="search a system, pos, etc." name="q"  />
+					<input type="submit" value="Find &raquo;" />
+				</form>
+			</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="content">
+		<div class="section">
+			<h2>User Settings</h2>
+		</div>
+
+		<div class="line"></div>
+
+		<div class="check">
+			<div class="good">Nice work <strong>Ninja Admin!</strong></div>
+		</div>
+
+		<div class="check">
+			<div class="bad">You need more training, please <a href="#">try again</a>.</div>
+		</div>
+
+		<div class="section form">
+			<form id="form" name="form" method="post" action="">
+				<p><input type="text" name="id" placeholder="User ID" tabindex="1" /></p>
+
+				<p><input type="text" name="id" placeholder="API Key" tabindex="2" /></p>
+
+				<p><strong>Select a character</strong><br />
+					<select name="date_end" tabindex="3">
+					<option selected="selected">Bruce Lee</option>
+					<option>Jackie Chan</option>
+					<option>John Claude Van Damme</option>
+					<option>Ben Johnson</option>
+					</select>
+				</p>
+
+				<p><input name="submit" type="submit" id="submit" value="Submit &raquo;" tabindex="4" /></p>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

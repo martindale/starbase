@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Starbase Tracker</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<link rel="stylesheet" type="text/css"  href="css/main.css" />
+</head>
+<body>
+<div class="wrapper">
+	<h1 class="logo">Starbase Tracker</h1>
+	<p class="welcome">Welcome back <strong><a href="#">Ninja Admin</a></strong> <span class="seperator">|</span> <a href="#"><img src="img/door_out.png" />Logout</a></p>
+
+	<div class="navigation">
+		<ul>
+			<li><a href="#"><img src="img/house.png" />Overview</a></li>
+			<li><a href="#"><img src="img/lorry.png" />Fuel</a></li>
+			<li><a href="#"><img src="img/wrench.png" />Admin</a></li>
+			<li><a href="#" class="active"><img src="img/add.png" />New POS</a></li>
+		</ul>
+
+			<div id="search">
+				<form method="get" action="search.php">
+					<input type="search" placeholder="search a system, pos, etc." name="q"  />
+					<input type="submit" value="Find &raquo;" />
+				</form>
+			</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="content">
+		<div class="section">
+			<h2>New Structure, Yay!</h2>
+		</div>
+
+		<div class="line"></div>
+
+		<div class="check">
+			<div class="bad">We already have a structure there, fool!</div>
+		</div>
+
+		<div class="section form">
+			<form id="pos" name="addpos" method="post" action="">
+				<p><input type="text" name="name" placeholder="Starbase Name" tabindex="1" /></p>
+
+				<p><strong>Location</strong><br />
+					<select name="region" class="small" tabindex="2">
+					<option>Venal</option>
+					<option>Delkin</option>
+					</select>
+					<select name="system" class="small" tabindex="3">
+					<option>2TH-3P</option>
+					<option>DKUK-G</option>
+					</select>
+					<input type="text" name="planet" class="small" placeholder="Planet" tabindex="4" />
+					<input type="text" name="moon" class="small" placeholder="Moon" tabindex="5" />
+				</p>
+				
+				<p><strong>Corporation</strong><br />
+				<select name="corp" tabindex="6">
+					<option>Dreddit</option>
+					<option>B0rt</option>
+					</select></p>
+				
+				<p><input type="text" name="owner" class="name" placeholder="Owner" tabindex="7" /></p>
+
+				<p><input name="submit" type="submit" id="submit" tabindex="8" value="Next &raquo;" /></p>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
