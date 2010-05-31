@@ -244,7 +244,7 @@ class Template {
 					echo('<td>' . $data["status"] . '</td>');
 					echo('<td>' . $data["corp"] . '</td>');
 					echo('<td>' . $data["owner"] . '</td>');
-					echo('<td style="text-align:center;"><a href="view.php?id=' . $data["id"] . '">Update</a></td>');
+					echo('<td style="text-align:center;"><a href="view.php?do=update&id=' . $data["id"] . '">Update</a></td>');
 					$i++;
 				}
 			}
