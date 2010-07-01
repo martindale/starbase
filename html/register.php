@@ -9,6 +9,7 @@
 		input[type="text"], input[type="password"] { width: 325px; }
 		input[type="checkbox"] { margin-right: 10px; }
 		input[type="submit"] { margin-top: 0; }
+		select { width: 350px; }
 		.wrapper { width: 400px; }
 		.section { width: 350px; }
 		.content { padding-bottom: 0; }
@@ -48,7 +49,15 @@
 			<form id="register" name="register" method="post" action="">
 				<p><?php $html->register_input("text", "user", "EVE Character Name", 1); ?></p>
 
-				<p><?php $html->register_input("text", "corp", "EVE Corporation", 2); ?></p>
+				<p>
+					<select name="corp" tabindex="2">
+					<optgroup label="EVE Corporation">
+					<option>Dreddit</option>
+					<option>Did I Just Do That</option>
+					<option>Ars Ex Discordia</option>
+					</optgroup>
+					</select>
+				</p>
 
 				<p><?php $html->register_input("password", "pass", "Password", 3); ?></p>
 

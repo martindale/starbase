@@ -14,8 +14,8 @@
 	<div class="navigation">
 		<ul>
 			<li><a href="index.php" class="active"><img src="img/house.png" />Overview</a></li>
-			<li><a href="#"><img src="img/lorry.png" />Fuel</a></li>
-			<li><a href="#"><img src="img/world.png" />Resources</a></li>
+			<li><a href="#"><img src="img/lorry.png" />Logistics</a></li>
+			<li><a href="#"><img src="img/world.png" />Recon</a></li>
 			<?php if ($user->right(2)): ?><li><a href="#"><img src="img/add.png" />New POS</a></li><?php endif; ?>
 			<?php if ($user->right(1)): ?><li><a href="#"><img src="img/wrench.png" />Admin</a></li><?php endif; ?>
 		</ul>

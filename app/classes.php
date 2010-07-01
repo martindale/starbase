@@ -90,9 +90,7 @@ class Database extends Error {
 		if ($data = $this->query($sql)) {
 			// Turn the MySQL result into an associatice array
 			$result = mysqli_fetch_assoc($data);
-			if (!mysqli_free_result($data)) {
-				$this->_error("A MySQL result could not be freed.");
-			}
+			mysqli_free_result($data);
 			return $result;
 		};
 	return false; }
@@ -240,7 +238,7 @@ class Template {
 						echo('<tr>');
 					}
 					echo('<td>' . $data["name"] . '</td>');
-					echo('<td><a href="http://evemaps.dotlan.net/region/' . $data["region"] . '">' . $data["region"] . '</a> / <a href="http://evemaps.dotlan.net/system/' . $data["system"] . '">' . $data["system"] . '</a> / <a href="#">' . $data["planet"] . ' &ndash ' . $data["moon"] . '</a></td>');
+					echo('<td><a href="http://evemaps.dotlan.net/region/' . $data["region"] . '" target="_blank">' . $data["region"] . '</a> / <a href="http://evemaps.dotlan.net/system/' . $data["system"] . '" target="_blank">' . $data["system"] . '</a> / <a href="#">' . $data["planet"] . ' &ndash ' . $data["moon"] . '</a></td>');
 					echo('<td>' . $data["status"] . '</td>');
 					echo('<td>' . $data["corp"] . '</td>');
 					echo('<td>' . $data["owner"] . '</td>');

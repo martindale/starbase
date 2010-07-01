@@ -66,8 +66,8 @@ $html = new Template("user.php");
 	<div class="navigation">
 		<ul>
 			<li><a href="index.php"><img src="img/house.png" />Overview</a></li>
-			<li><a href="#"><img src="img/lorry.png" />Fuel</a></li>
-			<li><a href="#"><img src="img/world.png" />Resources</a></li>
+			<li><a href="#"><img src="img/lorry.png" />Logistics</a></li>
+			<li><a href="#"><img src="img/world.png" />Recon</a></li>
 			<?php if ($user->right(1)): ?><li><a href="admin.php"><img src="img/wrench.png" />Admin</a></li><?php endif; ?>
 			<?php if ($user->right(2)): ?><li><a href="add.php"><img src="img/add.png" />New POS</a></li><?php endif; ?>
 		</ul>
