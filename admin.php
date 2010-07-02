@@ -14,11 +14,23 @@ $db = Database::start();
 if (!$db->connect()) {
 	header("Location: logout.php?msg=bad:Oh noes. We can't connect to the database.<br />Please try again later.");
 	exit();
+} else {
+	# Get user info
+	$user = new User($_COOKIE["id"]);
+
+	if (!$user->right(2)) {
+		header("Location: index.php");
+		exit();
+	}
+
+	# Close link
+	$db->disconnect();
+
+	# Start template system
+	$html = new Template("index.php");
+
+	# include_once("html/admin.php");
 }
-
-
-# Start template system
-$html = new Template("admin.php");
 
 ?>
 <!DOCTYPE html>
@@ -41,8 +53,8 @@ $html = new Template("admin.php");
 			<li><a href="index.php"><img src="img/house.png" />Overview</a></li>
 			<li><a href="#"><img src="img/lorry.png" />Logistics</a></li>
 			<li><a href="#"><img src="img/world.png" />Recon</a></li>
-			<?php if ($user->right(1)): ?><li><a href="admin.php"><img src="img/wrench.png" />Admin</a></li><?php endif; ?>
-			<?php if ($user->right(2)): ?><li><a href="add.php"><img src="img/add.png" />New POS</a></li><?php endif; ?>
+			<?php if ($user->right(2)): ?><li><a href="#"><img src="img/add.png" />New POS</a></li><?php endif; ?>
+			<?php if ($user->right(1)): ?><li><a href="admin.php" class="active"><img src="img/wrench.png" />Admin</a></li><?php endif; ?>
 		</ul>
 
 			<div id="search">
@@ -57,63 +69,56 @@ $html = new Template("admin.php");
 
 	<div class="content">
 
-		<?php if ($user->right(1) && isset($_GET["id"])): ?>
-		<div class="section">
-			<h2>Profile Settings for <?php echo $data->detail["name"]; ?></h2>
+		<div class="section" id="settings">
+			<h2>Settings</h2>
 		</div>
 
 		<div class="line"></div>
 
-		<?php if (isset($msg)) { $html->notice($msg); } ?>
+		<div class="notice info">Registration key (expires in <?php echo(60 - date("i")); ?>m): <code><?php echo md5(date("dmyH").$setting["secret"].$_SERVER["SERVER_NAME"]) ?></code><br />
+		This key is required to register, only give it to people you trust. New accounts must be activated before they can be used.</div>
 
 		<div class="section form">
-			<form id="profile" name="profile" method="post" action="">
-				<p><strong>Username</strong><br />
-				<input type="text" name="user" id="user" value="<?php echo $data->detail["name"]; ?>" /></p>
+			<form id="form" name="form" method="post" action="">
+				<p><strong>Alliance</strong><br /><input type="text" name="alliance" placeholder="Alliance Name" tabindex="1" /></p>
 
-				<p><strong>Corporation</strong><br />
-					<select name="corp">
-					<option>Dreddit</option>
-					<option>Did I Just Do That</option>
-					<option>Ars Ex Discordia</option>
-					</select>
-				</p>
+				<p><strong>Corporations</strong> (comma seperated)<br /><input type="text" name="corps" placeholder="Corps." tabindex="2" /></p>
 
-				<p><strong>Permissions</strong><br />
-				<label><input type="checkbox" name="admin" id="right" placeholder="Admin" <?php if ($data->right(1)) { echo "checked"; } ?> /> Director</label><br />
-				<label><input type="checkbox" name="pos" id="right" placeholder="Add POS" <?php if ($data->right(2)) { echo "checked"; } ?> /> Starbase Configurator</label><br />
-				<label><input type="checkbox" name="mod" id="right" placeholder="Mod Corp" <?php if ($data->right(3)) { echo "checked"; } ?> /> Starbase Fueler/Logistics</label><br /></p>
-
-				<p><input name="submit" type="submit" id="submit"  tabindex="5" value="Update &raquo;" /></p>
+				<p><input name="submit" type="submit" id="submit" value="Submit &raquo;" tabindex="4" /></p>
 			</form>
-		</div>
-		<?php else: ?>
-		<div class="section">
-			<h2>Your Profile</h2>
 		</div>
 
 		<div class="line"></div>
 
-		<div class="section form">
-			<form id="profile" name="profile" method="post" action="">
-				<p><strong>Username</strong><br />
-				<input type="text" name="name" id="name" value="<?php echo $user->detail["name"]; ?>" disabled /></p>
-
-				<p><strong>Corporation</strong><br />
-					<select name="corp" disabled >
-					<option selected="selected">Dreddit</option>
-					<option>Did I Just Do That</option>
-					<option>Ars Ex Discordia</option>
-					</select>
-				</p>
-
-				<p><strong>Permissions</strong><br />
-				<label><input type="checkbox" name="rights" id="rights" placeholder="Admin" <?php if ($user->right(1)) { echo "checked"; } ?> disabled /> Director</label><br />
-				<label><input type="checkbox" name="rights" id="rights" placeholder="Add POS" <?php if ($user->right(2)) { echo "checked"; } ?> disabled /> Starbase Configurator</label><br />
-				<label><input type="checkbox" name="rights" id="rights" placeholder="Mod Corp" <?php if ($user->right(3)) { echo "checked"; } ?> disabled /> Starbase Fueler/Logistics</label><br /></p>
-			</form>
+		<div class="section" id="users">
+			<h2>Users</h2>
 		</div>
-		<?php endif; ?>
+
+		<div class="line"></div>
+
+				<div class="section"> 
+					<table width="720" cellspacing="0" cellpadding="10" class="list"> 
+						<tr style="background-color:#d9d8d8; font-size:14px; font-weight:bold;"> 
+							<td width="150">User</td> 
+							<td width="150">Corp.</td> 
+							<td width="90">Director</td> 
+							<td width="90">Manager</td> 
+							<td width="90">Logistics</td> 
+							<td width="90">Active</td> 
+							<td width="60"></td> 
+						</tr>
+						<tr class="gray">
+							<td>demo</td>
+							<td>Dreddit</td>
+							<td><input type="checkbox" name="" id="right" /></td>
+							<td><input type="checkbox" name="" id="right" /></td>
+							<td><input type="checkbox" name="" id="right" /></td>
+							<td><input type="checkbox" name="" id="right" /></td>
+							<td style="text-align:center;"><a href="user.php?id=8">View</a></td>
+						</tr>
+					</table>
+				</div>
+
 	</div>
 </div>
 </body>

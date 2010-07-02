@@ -238,11 +238,12 @@ class Template {
 						echo('<tr>');
 					}
 					echo('<td>' . $data["name"] . '</td>');
-					echo('<td><a href="http://evemaps.dotlan.net/region/' . $data["region"] . '" target="_blank">' . $data["region"] . '</a> / <a href="http://evemaps.dotlan.net/system/' . $data["system"] . '" target="_blank">' . $data["system"] . '</a> / <a href="#">' . $data["planet"] . ' &ndash ' . $data["moon"] . '</a></td>');
+					echo('<td><a href="http://evemaps.dotlan.net/map/' . str_replace(" ", "_", $data["region"]) . '" target="_blank">' . $data["region"] . '</a> / <a href="http://evemaps.dotlan.net/system/' . $data["system"] . '" target="_blank">' . $data["system"] . '</a> / <a href="#">' . $data["planet"] . ' &ndash ' . $data["moon"] . '</a></td>');
 					echo('<td>' . $data["status"] . '</td>');
 					echo('<td>' . $data["corp"] . '</td>');
 					echo('<td>' . $data["owner"] . '</td>');
-					echo('<td style="text-align:center;"><a href="view.php?do=update&id=' . $data["id"] . '">Update</a></td>');
+					echo('<td style="text-align:center;"><a href="#">Update</a></td>');
+					echo('</tr>');
 					$i++;
 				}
 			}
@@ -286,7 +287,8 @@ class User {
 			"id"		=> $result["id"],
 			"name"		=> $result["user"],
 			"rights"	=> explode(",", $result["rights"]),
-			"corp"		=> $result["corp"]);
+			"corp"		=> $result["corp"],
+			"active"	=> $result["active"]);
 	}
 
 	public function right($right) {
@@ -295,7 +297,10 @@ class User {
 		}
 	return false; }
 
-	public function add($id, $api) {
-	}
+	public function active() {
+		if ($this->detail["active"] == "true") {
+			return true;
+		}
+	return false; }
 
 }

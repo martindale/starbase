@@ -51,7 +51,11 @@ if (!$db->connect()) {
 					$notice = array("bad", "Your key is invalid, please login.");
 					setcookie("key", null, time() - 100);
 				} else {
-					$notice = array("bad", "Either your username or password is incorrect.");
+					if (isset($_COOKIE["new"])) {
+						$notice = array("info", "Sorry, your account has not been activated yet.");
+					} else {
+						$notice = array("bad", "Either your username or password is incorrect.");
+					}
 				}
 			} else {
 				# valid user
@@ -60,6 +64,9 @@ if (!$db->connect()) {
 				$_SESSION["status"] = true;
 				session_regenerate_id(true);
 				setcookie("id", $id, time() + 60 * 60 * 24 * 14);
+				if (isset($_COOKIE["new"])) {
+					setcookie("new", "", time() - 100);
+				}
 
 				if (isset($_POST["remember"])) {
 					$key = md5($setting["secret"] . $_POST["pass"]);

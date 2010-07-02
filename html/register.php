@@ -28,6 +28,7 @@
 		.notice.info, .notice.help {
 			background-color: #c1f0f6;
 			border: 1px solid #66cccc; }
+		#key input[type="text"] { font-family: monospace; }
 	</style>
 </head>
 <body>
@@ -63,7 +64,7 @@
 
 				<p><?php $html->register_input("password", "pass_check", "Password Confirmation", 4); ?></p>
 
-				<p><?php $html->register_input("text", "key", "Registration Key", 5); ?></p>
+				<p id="key"><?php $html->register_input("text", "key", "Registration Key", 5); ?></p>
 
 				<p><input name="submit" type="submit" id="submit" value="Register &raquo;" tabindex="6" /></p>
 			</form>

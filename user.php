@@ -25,11 +25,14 @@ if (isset($_POST["submit"]) && $user->right(1)) {
 	if (isset($post["admin"])) { $rights .= "1,"; } else { $rights .= "0,"; }
 	if (isset($post["pos"])) { $rights .= "1,"; } else { $rights .= "0,"; }
 	if (isset($post["mod"])) { $rights .= "1"; } else { $rights .= "0"; }
+	
+	if (isset($post["active"])) { $post["active"] = "true"; } else { $post["active"] = "false"; }
 
 	$sql = "UPDATE `user` SET
 			`user` = '" . $post["user"] . "',
 			`rights` = '" . $rights . "',
-			`corp` = '" . $post["corp"] . "'
+			`corp` = '" . $post["corp"] . "',
+			`active` = '" . $post["active"] . "'
 			WHERE `id` = '" . $db->clean($_GET["id"]) . "'
 			LIMIT 1";
 
@@ -109,9 +112,11 @@ $html = new Template("user.php");
 				</p>
 
 				<p><strong>Permissions</strong><br />
-				<label><input type="checkbox" name="admin" id="right" placeholder="Admin" <?php if ($data->right(1)) { echo "checked"; } ?> /> Director</label><br />
-				<label><input type="checkbox" name="pos" id="right" placeholder="Add POS" <?php if ($data->right(2)) { echo "checked"; } ?> /> Starbase Configurator</label><br />
-				<label><input type="checkbox" name="mod" id="right" placeholder="Mod Corp" <?php if ($data->right(3)) { echo "checked"; } ?> /> Starbase Fueler/Logistics</label><br /></p>
+				<label><input type="checkbox" name="admin" id="right" <?php if ($data->right(1)) { echo "checked"; } ?> /> Director</label><br />
+				<label><input type="checkbox" name="pos" id="right" <?php if ($data->right(2)) { echo "checked"; } ?> /> Starbase Manager</label><br />
+				<label><input type="checkbox" name="mod" id="right" <?php if ($data->right(3)) { echo "checked"; } ?> /> Starbase Logistics</label></p>
+
+				<p><label><input type="checkbox" name="active" id="right" <?php if ($data->active()) { echo "checked"; } ?> /> Account active</label>
 
 				<p><input name="submit" type="submit" id="submit"  tabindex="5" value="Update &raquo;" /></p>
 			</form>
@@ -137,9 +142,9 @@ $html = new Template("user.php");
 				</p>
 
 				<p><strong>Permissions</strong><br />
-				<label><input type="checkbox" name="rights" id="rights" placeholder="Admin" <?php if ($user->right(1)) { echo "checked"; } ?> disabled /> Director</label><br />
-				<label><input type="checkbox" name="rights" id="rights" placeholder="Add POS" <?php if ($user->right(2)) { echo "checked"; } ?> disabled /> Starbase Configurator</label><br />
-				<label><input type="checkbox" name="rights" id="rights" placeholder="Mod Corp" <?php if ($user->right(3)) { echo "checked"; } ?> disabled /> Starbase Fueler/Logistics</label><br /></p>
+				<label><input type="checkbox" name="rights" id="rights" <?php if ($user->right(1)) { echo "checked"; } ?> disabled /> Director</label><br />
+				<label><input type="checkbox" name="rights" id="rights" <?php if ($user->right(2)) { echo "checked"; } ?> disabled /> Starbase Manager</label><br />
+				<label><input type="checkbox" name="rights" id="rights" <?php if ($user->right(3)) { echo "checked"; } ?> disabled /> Starbase Logistics</label><br /></p>
 			</form>
 		</div>
 		<?php endif; ?>
