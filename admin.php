@@ -41,6 +41,7 @@ if (!$db->connect()) {
 	<link rel="stylesheet" type="text/css"  href="css/main.css" />
 	<style tyle="text/css">
 		#name { width: 200px; }
+		#corps { width: 700px; }
 	</style>
 </head>
 <body>
@@ -69,26 +70,22 @@ if (!$db->connect()) {
 
 	<div class="content">
 
+		<div class="notice info">Registration key (expires in <?php echo(60 - date("i")); ?>m): <code><?php echo md5(date("dmyH").$setting["secret"].$_SERVER["SERVER_NAME"]) ?></code><br />
+		This key is required to register, only give it to people you trust. New accounts must be activated before they can be used.</div>
+
 		<div class="section" id="settings">
 			<h2>Settings</h2>
 		</div>
 
 		<div class="line"></div>
 
-		<div class="notice info">Registration key (expires in <?php echo(60 - date("i")); ?>m): <code><?php echo md5(date("dmyH").$setting["secret"].$_SERVER["SERVER_NAME"]) ?></code><br />
-		This key is required to register, only give it to people you trust. New accounts must be activated before they can be used.</div>
-
 		<div class="section form">
 			<form id="form" name="form" method="post" action="">
-				<p><strong>Alliance</strong><br /><input type="text" name="alliance" placeholder="Alliance Name" tabindex="1" /></p>
 
-				<p><strong>Corporations</strong> (comma seperated)<br /><input type="text" name="corps" placeholder="Corps." tabindex="2" /></p>
+				<p><strong>Corporations</strong> (comma seperated)<br /><input type="text" name="corps" id="corps" placeholder="Corps." tabindex="1" /> <input name="submit" type="submit" id="submit" value="Update &raquo;" tabindex="2" /></p>
 
-				<p><input name="submit" type="submit" id="submit" value="Submit &raquo;" tabindex="4" /></p>
 			</form>
 		</div>
-
-		<div class="line"></div>
 
 		<div class="section" id="users">
 			<h2>Users</h2>
@@ -97,14 +94,14 @@ if (!$db->connect()) {
 		<div class="line"></div>
 
 				<div class="section"> 
-					<table width="720" cellspacing="0" cellpadding="10" class="list"> 
+					<table width="850" cellspacing="0" cellpadding="10" class="list"> 
 						<tr style="background-color:#d9d8d8; font-size:14px; font-weight:bold;"> 
-							<td width="150">User</td> 
-							<td width="150">Corp.</td> 
-							<td width="90">Director</td> 
-							<td width="90">Manager</td> 
-							<td width="90">Logistics</td> 
-							<td width="90">Active</td> 
+							<td width="170">User</td> 
+							<td width="240">Corp.</td> 
+							<td width="80">Director</td> 
+							<td width="80">Manager</td> 
+							<td width="160">Logistics</td> 
+							<td width="60">Active</td> 
 							<td width="60"></td> 
 						</tr>
 						<tr class="gray">
