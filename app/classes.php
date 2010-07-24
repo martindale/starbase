@@ -2,6 +2,8 @@
 
 if (!$safe) { header("HTTP/1.0 404 Not Found"); exit(); }
 
+include_once('settings.php');
+
 class Database extends Error {
 
 	# Class variables
@@ -12,10 +14,12 @@ class Database extends Error {
 
 	// The constructor, sets the database details
 	private function Database() {
-		$this->db["host"]	= "localhost";	// server address
-		$this->db["user"]	= "sam";		// database username
-		$this->db["pass"]	= "HyperL0g0";	// database password
-		$this->db["db"]		= "starbase";	// database name
+		// Fetch database parameters from the settings file
+		global $settings;
+		$this->db["host"]	= $settings["db_host"];
+		$this->db["user"]	= $settings["db_username"];
+		$this->db["pass"]	= $settings["db_password"];
+		$this->db["db"]		= $settings["db_database"];
 
 		// Connect to the database
 		$this->connect();
