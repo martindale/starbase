@@ -39,11 +39,11 @@ if (!$db->connect()) {
 	}
 	# Close link
 	$db->disconnect();
-
-	# Start template system
-	$html = new Template("register.php");
-
-	# Include the template file
-	include_once("html/register.php");
 }
+
+# Start template system
+$html = new Template("register.php");
+
+# Include the template file
+include_once("html/register.php");
 ?>
