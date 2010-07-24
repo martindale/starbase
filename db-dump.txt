@@ -59,7 +59,4 @@ CREATE TABLE `user` (
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (`id`, `user`, `pass`, `rights`, `corp`, `active`) VALUES
-(11,	'Test123',	'2847eb2906fecb66983e272078b2e076',	'0,0,0',	'Dreddit',	'false'),
-(7,	'Invitus',	'be964a6e8597f564b4713348617f3625',	'1,1,1',	'Dreddit',	'true'),
 (8,	'demo',	'd0bbbdebbbf2fd0d46e747d3487e3f77',	'1,1,1',	'Dreddit',	'true'),
-(10,	'Sam Ipy',	'be964a6e8597f564b4713348617f3625',	'0,1,1',	'Dreddit',	'true');
