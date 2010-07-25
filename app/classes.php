@@ -188,8 +188,13 @@ class Template {
 	# Variables
 	private $notice;
 	private $db;
+	public	$page;
 
 	# Functions
+	public function Template($page) {
+		$this->page = $page;
+	}
+
 	public function login_input($type, $name, $placeholder, $index) {
 		if (!empty($this->notice) && (strpos($this->notice[1], "database") || strpos($this->notice[1], "cookies"))) {
 			$html = '<input type="' . $type . '" name="' . $name . '" placeholder="' . $placeholder . '" tabindex="' . $index . '" disabled />';
@@ -270,6 +275,15 @@ class Template {
 			return true;
 		}
 	return false; }
+
+	public function title(){
+		if ($this->page == "index.php") {
+			$title = "";
+		} elseif ($this->page == "admin.php") {
+			$title = " - Admin";
+		}
+		return $title;
+	}
 
 }
 

@@ -101,7 +101,7 @@ input[type=text], input[type=search], input[type=password] {
 		padding: 20px;
 		text-decoration: none }
 
-		.navigation li a:hover,.navigation li .active { background-color:#30a4b1;color: #FFF }
+		.navigation li a:hover { background-color:#30a4b1;color: #FFF }
 
 
 .notice {
