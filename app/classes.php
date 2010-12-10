@@ -123,12 +123,12 @@ class Database extends Error {
 	public function clean($dirty) {
 		if (!is_array($dirty)) {
 			$dirty = mysqli_real_escape_string($this->connection, trim($dirty));
-			$clean = stripslashes($dirty);
+			$clean = strip_tags(stripslashes($dirty));
 	return $clean; };
 		$clean = array();
 		foreach ($dirty as $p => $data) {
 			$data = mysqli_real_escape_string($this->connection, trim($data));
-			$data = stripslashes($data);
+			$data = strip_tags(stripslashes($data));
 			$clean[$p] = $data; };
 	return $clean; }
 
