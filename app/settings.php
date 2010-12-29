@@ -12,6 +12,6 @@ $setting["path"]	= "/test/";
 
 # Database settings
 $settings["db_host"] = "localhost";
-$settings["db_username"] = "sam";
-$settings["db_password"] = "HyperL0g0";
-$settings["db_database"] = "starbase";
+$settings["db_username"] = "";
+$settings["db_password"] = "";
+$settings["db_database"] = "";
